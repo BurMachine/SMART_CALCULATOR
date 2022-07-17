@@ -39,10 +39,10 @@ int parser(char *input, stack **INPUT) {
             bracket_unar = 0;
             continue;
         } else if (input[i] == '(' && (input[i + 1] != '+' || input[i + 1] != '-')) {
-            stack_push(INPUT, 0, 0, LEFT_BR);
+            stack_push(INPUT, 0, -1, LEFT_BR);
             continue;
         } else if (input[i] == ')' && bracket_unar == 0) {
-            stack_push(INPUT, 0, 0, RIGHT_BR);
+            stack_push(INPUT, 0, -1, RIGHT_BR);
             continue;
         } else if (input[i] == '^') {
             stack_push(INPUT, 0, 3, POWER);
@@ -67,6 +67,7 @@ int parser(char *input, stack **INPUT) {
             else if (a == 27) {stack_push(INPUT, 0, 4, LN);}
         }
     }
+    return code;
 }
 
 double get_number(char *input, int *i) {
