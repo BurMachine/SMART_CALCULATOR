@@ -6,7 +6,7 @@
 #define SMART_CALCULATOR_STACK_H
 
 typedef enum {
-    x = 0,
+    XXX = 0,
     NUMBER = 1,
     PLUS = 2,
     SUB = 3,
@@ -34,10 +34,17 @@ typedef struct stack_struct {
     struct stack_struct *next;
 }stack;
 
+enum code {
+    ERROR,
+    SUCCESS
+};
+
 void stack_push(stack **first, long double value, int priority, value_type type);
 void stack_pop(stack **last);
 stack stack_pick(stack *current);
-
+void reverse_stack(stack **src, stack **dest);
+void stack_double_pop(stack **top);
+void stack_next_pop(stack **top);
 
 void print_stack(stack *A);
 

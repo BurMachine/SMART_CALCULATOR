@@ -63,7 +63,7 @@ int validation(char *IN) {
 //        if (toch) code = 1;
         if (code) break;
     }
-
+    IN = input;
     if (left != right) code = 1;
     return code;
 }
