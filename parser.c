@@ -61,6 +61,10 @@ int parser(char *input, stack **INPUT) {
             else if (a == 2) {stack_push(INPUT, 0, 4, ACOS);}
             else if (a == 3) {stack_push(INPUT, 0, 4, ATAN);}
             continue;
+        } else if (input[i] == 'l') {
+            int a = get_log_ln(input, &i);
+            if (!a) {stack_push(INPUT, 0, 4, LOG);}
+            else if (a == 27) {stack_push(INPUT, 0, 4, LN);}
         }
     }
 }
@@ -91,6 +95,20 @@ int get_trigonometry_or_sqrt(char *input, int *i) {
     } else if (input[k] == 't') {
         code = 3;
         k += 2;
+    }
+    *i = k;
+    return code;
+}
+
+int get_log_ln(char *input, int *i) {
+    int code = -1;
+    int k = *i;
+    if (input[k] == 'l' && input[k + 1] == 'o') {
+        code = 0;
+        k += 2;
+    } else if (input[k] == 'l' && input[k + 1] == 'n') {
+        code = 27;
+        k += 1;
     }
     *i = k;
     return code;

@@ -21,8 +21,8 @@ typedef enum {
     ASIN = 12,
     ATAN = 13,
     SQRT = 14,
-    ln = 15,
-    log = 16,
+    LN = 15,
+    LOG = 16,
     LEFT_BR = 17,
     RIGHT_BR = 18
 } value_type;
