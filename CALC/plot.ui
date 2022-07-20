@@ -6,29 +6,29 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>678</width>
-    <height>548</height>
+    <width>862</width>
+    <height>733</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QCustomPlot" name="widget" native="true">
+  <widget class="QCustomPlot" name="plot_res" native="true">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>651</width>
-     <height>381</height>
+     <x>20</x>
+     <y>20</y>
+     <width>821</width>
+     <height>541</height>
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="result">
+  <widget class="QLineEdit" name="expression">
    <property name="geometry">
     <rect>
-     <x>340</x>
-     <y>410</y>
-     <width>321</width>
+     <x>350</x>
+     <y>580</y>
+     <width>491</width>
      <height>61</height>
     </rect>
    </property>
@@ -38,11 +38,11 @@
     </font>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_TAN_4">
+  <widget class="QPushButton" name="pushButton_GO_BANK">
    <property name="geometry">
     <rect>
-     <x>420</x>
-     <y>480</y>
+     <x>680</x>
+     <y>650</y>
      <width>151</width>
      <height>61</height>
     </rect>
@@ -68,11 +68,11 @@ QPushButton:pressed {
     <string>GO</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>390</y>
+     <x>20</x>
+     <y>560</y>
      <width>328</width>
      <height>149</height>
     </rect>
@@ -137,6 +137,52 @@ QPushButton:pressed {
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>350</x>
+     <y>670</y>
+     <width>31</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Step</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="Step">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>670</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>670</y>
+     <width>51</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>X value</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="x_value">
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>670</y>
+     <width>101</width>
+     <height>21</height>
+    </rect>
+   </property>
   </widget>
  </widget>
  <customwidgets>

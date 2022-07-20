@@ -200,7 +200,7 @@ void MainWindow::on_pushButton_SQRT_clicked()
 void MainWindow::on_pushButton_MOD_clicked()
 {
     if (!(ui->result->isReadOnly()))
-        ui->result->setText(ui->result->text() + "mod(");
+        ui->result->setText(ui->result->text() + "mod");
 }
 
 void MainWindow::on_pushButton_LN_clicked()
@@ -221,9 +221,11 @@ void MainWindow::on_pushButton_EQUAL_clicked()
 {
     QByteArray tmp = ui->result->text().toLocal8Bit();
     char *input = tmp.data();
-    if (!validation(input) || 1) {
+//    QMessageBox::about(this, "Error", input);
+    if (validation(input) == 0) {
             stack *one = NULL, *one_rev = NULL, *two = NULL, *three = NULL, *rpn_s = NULL, *rpn_n = NULL;
-            parser(input, &one);
+            double x_value = 0;
+            parser(input, &one, x_value);
             reverse_stack(&one, &one_rev);
             RPN(&one_rev, &rpn_n, &rpn_s);
             reverse_stack(&rpn_n, &two);
@@ -238,26 +240,29 @@ void MainWindow::on_pushButton_EQUAL_clicked()
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void MainWindow::on_pushButton_GRAPH_clicked()
 {
-    PLOT window;
-    window.setModal(true);
-    window.exec();
+//    PLOT window;
+//    window.setModal(true);
+//    window.exec();
+    if (_open) {
+        _open->raise();
+        _open->activateWindow();
+    } else {
+    _open = new PLOT(this);
+    _open->show();
+    }
+}
+
+
+void MainWindow::on_pushButton_TAN_3_clicked()
+{
+    if (_opened) {
+        _opened->raise();
+        _opened->activateWindow();
+    } else {
+    _opened = new bank(this);
+    _opened->show();
+    }
 }
 

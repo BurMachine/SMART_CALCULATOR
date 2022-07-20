@@ -9,27 +9,33 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    bank.cpp \
     main.cpp \
     mainwindow.cpp \
     plot.cpp \
     stack.c \
     parser.c \
+    table.cpp \
     validation.c \
     calculating.c \
     qcustomplot.cpp
 
 HEADERS += \
+    bank.h \
     mainwindow.h \
     plot.h \
     stack.h \
     parser.h \
+    table.h \
     validation.h \
     calculating.h \
     qcustomplot.h
 
 FORMS += \
+    bank.ui \
     mainwindow.ui \
-    plot.ui
+    plot.ui \
+    table.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

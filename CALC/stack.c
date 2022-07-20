@@ -47,10 +47,10 @@ void stack_next_pop(stack **top) {
     (*top)->next = tmp;
 }
 
-stack stack_pick(stack *current) {
-    current->next--;
-    return *current;
-}
+//stack stack_pick(stack *current) {
+//    current->next--;
+//    return *current;
+//}
 
 void print_stack(stack *A) {
     stack *dno = A;

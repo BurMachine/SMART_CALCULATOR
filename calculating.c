@@ -2,13 +2,14 @@
 #include "parser.h"
 #include "stack.h"
 #include "stdlib.h"
+#include <stdio.h>
 
 int QT_processing (char *input, long double value, long double *result) {
     int code = ERROR;
-    if (!validation(input) || 1) {
+    if (!validation(input)) {
         code = SUCCESS;
         stack *one = NULL, *one_rev = NULL, *two = NULL, *three = NULL, *rpn_s = NULL, *rpn_n = NULL;
-        parser(input, &one);
+        parser(input, &one, value);
         reverse_stack(&one, &one_rev);
         RPN(&one_rev, &rpn_n, &rpn_s);
         reverse_stack(&rpn_n, &two);
@@ -83,7 +84,10 @@ void calculator(stack ** result, stack **calculated) {
             stack_double_pop(calculated);
         } else if ((*result)->type == MOD) {
             stack_pop(result);
-            stack_push(calculated, fmod((*calculated)->next->value, (*calculated)->value), 0, NUMBER);
+//            printf("калькулятор%Lf\n", (*calculated)->value);
+//            printf("калькулятор%Lf\n", (*calculated)->next->value);
+            stack_push(calculated, fmodl((*calculated)->next->value, (*calculated)->value), 0, NUMBER);
+//            printf("калькулятор%Lf\n", (*calculated)->value);
             stack_double_pop(calculated);
         } else if ((*result)->type == POWER) {
             stack_pop(result);
@@ -138,4 +142,46 @@ void calculator(stack ** result, stack **calculated) {
         if (!*result || code) break;
         if (!(*result)->next) code = 1;
     }
+}
+
+
+
+long double bank(long double sum, int time,long double percent, size_t type, long double *sum_res, long double *mounth_pay, long double *overpay, int N) {
+    long double payment_mounth = 0;
+    long double overpayment = 0;
+    long double summary_payment = 0;
+    char input[500];
+    if (type == 1) {
+
+        if (!check_for_bank(sum, time, percent, type)) {
+            percent = percent / 12;
+            sprintf(input, "%Lf*(%Lf+%Lf/((1+%Lf)^%Lf - 1))", sum, (long double) percent, (long double) percent,
+                    (long double) percent, (long double) time);
+            QT_processing(input, 0, &payment_mounth);
+            *mounth_pay = payment_mounth;
+            summary_payment = payment_mounth * (long double)time;
+            *sum_res = summary_payment;
+            overpayment = summary_payment - sum;
+            *overpay = overpayment;
+        }
+    } else if (type == 2) {
+        percent = percent / 12;
+        long double OD = sum/(long double)time;
+        long double OZ = sum - (OD *(long double)N);
+        sprintf(input, "%Lf+(%Lf-%Lf*%Lf)*%Lf/12",OD, sum, OZ, (long double)N, percent);
+        QT_processing(input, 0, &payment_mounth);
+        *mounth_pay = payment_mounth;
+        summary_payment = payment_mounth * (long double)time;
+        *sum_res = summary_payment;
+        overpayment = summary_payment - sum;
+        *overpay = overpayment;
+    }
+}
+
+int check_for_bank(long double sum, int time,long double percent, size_t type) {
+    int code = 1;
+    if (sum > 0 && time > 0 && percent >= 0) {
+        code = 0;
+    }
+    return code;
 }

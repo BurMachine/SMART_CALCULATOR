@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include "./qcustomplot.h"
+#include "plot.h"
+#include "bank.h"
 
 #ifdef __cplusplus
 extern "C"
@@ -23,6 +25,9 @@ QT_END_NAMESPACE
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+    QPointer<PLOT> _open;
+    QPointer<bank> _opened;
+    QPointer<table> table_opened;
 
 public:
     MainWindow(QWidget *parent = nullptr);
@@ -30,6 +35,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    PLOT *plot_ui;
 
 private slots:
     void on_pushButton_0_clicked();
@@ -70,5 +76,6 @@ private slots:
 //    void math_operations();
     void on_pushButton_EQUAL_clicked();
     void on_pushButton_GRAPH_clicked();
+    void on_pushButton_TAN_3_clicked();
 };
 #endif // MAINWINDOW_H

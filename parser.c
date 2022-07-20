@@ -1,13 +1,15 @@
 #include "parser.h"
 #include <stdio.h>
 
-int parser(char *input, stack **INPUT) {
+int parser(char *input, stack **INPUT, long double x_value) {
     int code = 0;
     int bracket_unar = 0;
     for (int i = 0; input[i] != '\n' && input[i] != '\0'; i++) {
         if ((input[i] >= 48 && input[i] <= 57) || input[i] == '.' || input[i] == ',') {
             long double num = get_number(input, &i);
             stack_push(INPUT, num, 0, NUMBER);
+//            printf("парсер%Lf\n", (*INPUT)->value);
+            printf("");
             i--;
             continue;
         } else if (input[i] == '*' || input[i] == '/' || input[i] == 'm') {
@@ -28,7 +30,7 @@ int parser(char *input, stack **INPUT) {
             i--;
             continue;
         } else if ((input[i] == '+' || input[i] == '-') && ((input[i - 1] >= 48 && input[i - 1] <= 57) || (input[i - 2] >= 48 && input[i - 2] <= 57)
-        || input[i - 1] == ')' || input[i - 2] == ')')) {
+                                                            || input[i - 1] == ')' || input[i - 2] == ')')) {
             if (input[i] == '+') stack_push(INPUT, 0, 1, PLUS);
             else if (input[i] == '-') {stack_push(INPUT, 0, 1, SUB);}
             continue;
@@ -65,6 +67,9 @@ int parser(char *input, stack **INPUT) {
             int a = get_log_ln(input, &i);
             if (!a) {stack_push(INPUT, 0, 4, LOG);}
             else if (a == 27) {stack_push(INPUT, 0, 4, LN);}
+        } else if (input[i] == 'x') {
+            stack_push(INPUT, x_value, 0, XXX);
+            continue;
         }
     }
     return code;

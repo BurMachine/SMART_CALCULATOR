@@ -1006,21 +1006,6 @@ QPushButton:pressed {
      <string>depos</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="result_2">
-    <property name="geometry">
-     <rect>
-      <x>640</x>
-      <y>410</y>
-      <width>441</width>
-      <height>91</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-   </widget>
   </widget>
  </widget>
  <resources/>

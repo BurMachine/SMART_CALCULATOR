@@ -30,8 +30,8 @@ public:
 private slots:
     void on_pushButton_GO_PLOT_clicked();
 
-private:
-    Ui::PLOT *ui;
+//private:
+//    Ui::PLOT *ui;
 
 private:
     Ui::PLOT *ui;
