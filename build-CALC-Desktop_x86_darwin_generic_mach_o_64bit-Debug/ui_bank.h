@@ -39,12 +39,14 @@ public:
     QRadioButton *radioButton;
     QRadioButton *radioButton_2;
     QLabel *label_5;
+    QLineEdit *N_pay;
+    QLabel *label_6;
 
     void setupUi(QDialog *bank)
     {
         if (bank->objectName().isEmpty())
             bank->setObjectName(QString::fromUtf8("bank"));
-        bank->resize(602, 499);
+        bank->resize(602, 591);
         label = new QLabel(bank);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(20, 60, 121, 41));
@@ -78,7 +80,7 @@ public:
         srok->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox = new QGroupBox(bank);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
-        groupBox->setGeometry(QRect(10, 310, 281, 81));
+        groupBox->setGeometry(QRect(10, 410, 281, 81));
         mounth_res = new QLineEdit(groupBox);
         mounth_res->setObjectName(QString::fromUtf8("mounth_res"));
         mounth_res->setGeometry(QRect(10, 30, 261, 41));
@@ -86,7 +88,7 @@ public:
         mounth_res->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox_3 = new QGroupBox(bank);
         groupBox_3->setObjectName(QString::fromUtf8("groupBox_3"));
-        groupBox_3->setGeometry(QRect(10, 400, 281, 81));
+        groupBox_3->setGeometry(QRect(10, 500, 281, 81));
         overpay = new QLineEdit(groupBox_3);
         overpay->setObjectName(QString::fromUtf8("overpay"));
         overpay->setGeometry(QRect(10, 30, 261, 41));
@@ -94,7 +96,7 @@ public:
         overpay->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         groupBox_2 = new QGroupBox(bank);
         groupBox_2->setObjectName(QString::fromUtf8("groupBox_2"));
-        groupBox_2->setGeometry(QRect(310, 310, 271, 81));
+        groupBox_2->setGeometry(QRect(310, 410, 271, 81));
         sum_pay = new QLineEdit(groupBox_2);
         sum_pay->setObjectName(QString::fromUtf8("sum_pay"));
         sum_pay->setGeometry(QRect(10, 30, 251, 41));
@@ -102,7 +104,7 @@ public:
         sum_pay->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         pushButton_COUNT_BANK = new QPushButton(bank);
         pushButton_COUNT_BANK->setObjectName(QString::fromUtf8("pushButton_COUNT_BANK"));
-        pushButton_COUNT_BANK->setGeometry(QRect(310, 420, 271, 61));
+        pushButton_COUNT_BANK->setGeometry(QRect(310, 520, 271, 61));
         pushButton_COUNT_BANK->setFont(font1);
         pushButton_COUNT_BANK->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(55, 67, 135);\n"
@@ -128,6 +130,15 @@ public:
         label_5->setObjectName(QString::fromUtf8("label_5"));
         label_5->setGeometry(QRect(20, 10, 111, 41));
         label_5->setFont(font);
+        N_pay = new QLineEdit(bank);
+        N_pay->setObjectName(QString::fromUtf8("N_pay"));
+        N_pay->setGeometry(QRect(140, 320, 441, 61));
+        N_pay->setFont(font1);
+        N_pay->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+        label_6 = new QLabel(bank);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_6->setGeometry(QRect(10, 320, 131, 61));
+        label_6->setFont(font);
 
         retranslateUi(bank);
 
@@ -149,6 +160,9 @@ public:
         radioButton->setText(QCoreApplication::translate("bank", "Annuity", nullptr));
         radioButton_2->setText(QCoreApplication::translate("bank", "Differential", nullptr));
         label_5->setText(QCoreApplication::translate("bank", "BANK CALC", nullptr));
+        label_6->setText(QCoreApplication::translate("bank", "Numbers of\n"
+" payments\n"
+"(for differ.)", nullptr));
     } // retranslateUi
 
 };

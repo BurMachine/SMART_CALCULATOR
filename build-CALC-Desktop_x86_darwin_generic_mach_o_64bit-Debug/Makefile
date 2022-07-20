@@ -966,6 +966,13 @@ compiler_moc_header_clean:
 moc_bank.cpp: ../CALC/bank.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QDialog \
 		/usr/local/lib/QtWidgets.framework/Headers/qdialog.h \
+		../CALC/table.h \
+		/usr/local/lib/QtGui.framework/Headers/QStandardItemModel \
+		/usr/local/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../CALC/parser.h \
+		../CALC/stack.h \
+		../CALC/validation.h \
+		../CALC/calculating.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
 	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/gryffind/PROJECTS/github/SMART_CALCULATOR/build-CALC-Desktop_x86_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/gryffind/PROJECTS/github/SMART_CALCULATOR/CALC -I/usr/local/lib/QtPrintSupport.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib ../CALC/bank.h -o moc_bank.cpp
@@ -985,6 +992,9 @@ moc_mainwindow.cpp: ../CALC/mainwindow.h \
 		../CALC/validation.h \
 		../CALC/calculating.h \
 		../CALC/bank.h \
+		../CALC/table.h \
+		/usr/local/lib/QtGui.framework/Headers/QStandardItemModel \
+		/usr/local/lib/QtGui.framework/Headers/qstandarditemmodel.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
 	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/gryffind/PROJECTS/github/SMART_CALCULATOR/build-CALC-Desktop_x86_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/gryffind/PROJECTS/github/SMART_CALCULATOR/CALC -I/usr/local/lib/QtPrintSupport.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib ../CALC/mainwindow.h -o moc_mainwindow.cpp
@@ -1046,6 +1056,13 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 bank.o: ../CALC/bank.cpp ../CALC/bank.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QDialog \
 		/usr/local/lib/QtWidgets.framework/Headers/qdialog.h \
+		../CALC/table.h \
+		/usr/local/lib/QtGui.framework/Headers/QStandardItemModel \
+		/usr/local/lib/QtGui.framework/Headers/qstandarditemmodel.h \
+		../CALC/parser.h \
+		../CALC/stack.h \
+		../CALC/validation.h \
+		../CALC/calculating.h \
 		ui_bank.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o bank.o ../CALC/bank.cpp
 
@@ -1064,6 +1081,9 @@ main.o: ../CALC/main.cpp ../CALC/mainwindow.h \
 		../CALC/validation.h \
 		../CALC/calculating.h \
 		../CALC/bank.h \
+		../CALC/table.h \
+		/usr/local/lib/QtGui.framework/Headers/QStandardItemModel \
+		/usr/local/lib/QtGui.framework/Headers/qstandarditemmodel.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../CALC/main.cpp
@@ -1083,6 +1103,9 @@ mainwindow.o: ../CALC/mainwindow.cpp ../CALC/mainwindow.h \
 		../CALC/validation.h \
 		../CALC/calculating.h \
 		../CALC/bank.h \
+		../CALC/table.h \
+		/usr/local/lib/QtGui.framework/Headers/QStandardItemModel \
+		/usr/local/lib/QtGui.framework/Headers/qstandarditemmodel.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../CALC/mainwindow.cpp
 

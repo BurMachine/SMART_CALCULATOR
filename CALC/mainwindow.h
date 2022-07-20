@@ -27,7 +27,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
     QPointer<PLOT> _open;
     QPointer<bank> _opened;
-    QPointer<table> table_opened;
+
 
 public:
     MainWindow(QWidget *parent = nullptr);

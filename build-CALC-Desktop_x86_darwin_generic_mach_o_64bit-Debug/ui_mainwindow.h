@@ -546,8 +546,8 @@ public:
         pushButton_XXX->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         pushButton_MOD->setText(QCoreApplication::translate("MainWindow", "mod", nullptr));
         pushButton_GRAPH->setText(QCoreApplication::translate("MainWindow", "PLOT", nullptr));
-        pushButton_TAN_3->setText(QCoreApplication::translate("MainWindow", "bank", nullptr));
-        pushButton_TAN_4->setText(QCoreApplication::translate("MainWindow", "depos", nullptr));
+        pushButton_TAN_3->setText(QCoreApplication::translate("MainWindow", "BANK", nullptr));
+        pushButton_TAN_4->setText(QCoreApplication::translate("MainWindow", "DEPOS", nullptr));
     } // retranslateUi
 
 };

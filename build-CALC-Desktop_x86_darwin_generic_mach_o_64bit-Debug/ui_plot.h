@@ -28,7 +28,7 @@ class Ui_PLOT
 public:
     QCustomPlot *plot_res;
     QLineEdit *expression;
-    QPushButton *pushButton_GO_BANK;
+    QPushButton *pushButton_GO_PLOT;
     QWidget *layoutWidget;
     QGridLayout *gridLayout;
     QGroupBox *groupBox;
@@ -60,15 +60,13 @@ public:
         expression->setObjectName(QString::fromUtf8("expression"));
         expression->setGeometry(QRect(350, 580, 491, 61));
         QFont font;
-        font.setPointSize(14);
+        font.setPointSize(24);
         expression->setFont(font);
-        pushButton_GO_BANK = new QPushButton(PLOT);
-        pushButton_GO_BANK->setObjectName(QString::fromUtf8("pushButton_GO_BANK"));
-        pushButton_GO_BANK->setGeometry(QRect(680, 650, 151, 61));
-        QFont font1;
-        font1.setPointSize(24);
-        pushButton_GO_BANK->setFont(font1);
-        pushButton_GO_BANK->setStyleSheet(QString::fromUtf8("QPushButton {\n"
+        pushButton_GO_PLOT = new QPushButton(PLOT);
+        pushButton_GO_PLOT->setObjectName(QString::fromUtf8("pushButton_GO_PLOT"));
+        pushButton_GO_PLOT->setGeometry(QRect(680, 650, 151, 61));
+        pushButton_GO_PLOT->setFont(font);
+        pushButton_GO_PLOT->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "  background-color: rgb(55, 67, 135);\n"
 "  color: white; \n"
 "  border: 1px solid gray;\n"
@@ -159,7 +157,7 @@ public:
     void retranslateUi(QDialog *PLOT)
     {
         PLOT->setWindowTitle(QCoreApplication::translate("PLOT", "Dialog", nullptr));
-        pushButton_GO_BANK->setText(QCoreApplication::translate("PLOT", "GO", nullptr));
+        pushButton_GO_PLOT->setText(QCoreApplication::translate("PLOT", "GO", nullptr));
         groupBox->setTitle(QCoreApplication::translate("PLOT", "GroupBox", nullptr));
         label->setText(QCoreApplication::translate("PLOT", "X min", nullptr));
         label_2->setText(QCoreApplication::translate("PLOT", "X max", nullptr));

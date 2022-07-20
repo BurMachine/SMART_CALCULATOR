@@ -12,3 +12,5 @@ table::~table()
 {
     delete ui;
 }
+
+

@@ -25,7 +25,6 @@ class bank;
 class bank : public QDialog
 {
     Q_OBJECT
-    QPointer<table> table_opened;
 
 public:
     explicit bank(QWidget *parent = nullptr);

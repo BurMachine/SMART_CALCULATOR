@@ -12,15 +12,16 @@ int validation(char *IN) {
     int i = 0;
     char input[300];
     delete_spasec(IN, input);
-    for (; input[i] != '\n' && input[i] != '\0'; i++) {
+    for (; input[i] != '\n'; i++) {
         if ((input[i] >= 48 && input[i] <= 57) || input[i] == 'x') {
             continue;
         } else if ((input[i] == '+' || input[i] == '-' || input[i] == '/' || input[i] == '*' || input[i] == '^')
         && ((input[i + 1] >= 48 && input[i + 1] <= 57) || input[i + 1] == 'l' || input[i + 1] == 's' || input[i + 1] == 'c' || input[i + 1] == 't' || input[i + 1] == 'a' || input[i + 1] == 'm' || input[i + 1] == '\0' || input[i + 1] == '(')
-        && (input[i - 1] == ')' || (input[i - 1] >= 48 && input[i - 1] <= 57))) {
+        && (input[i - 1] == ')' || (input[i - 1] >= 48 && input[i - 1] <= 57) || input[i - 1] == 'x')) {
             toch = 0;
             continue;
-        } else if (input[i] == '\0') {
+        } else if (input[i] == '\0' && i != 0) {
+            break;
         } else if (input[i] == '(' && input[i + 1] != ')' && input[i + 1] != '\0') {
             left++;
             continue;
@@ -58,6 +59,8 @@ int validation(char *IN) {
         } else if ((input[i] == '.' || input[i] == ',') && (input[i + 1] >= 48 && input[i + 1] <= 57) && (input[i - 1] >= 48 && input[i - 1] <= 57) && toch != 1) {
             toch = 1;
             continue;
+        } else if (input[i] == '\0' && i == 0) {
+            code = 1;
         }
         else {
             code = 1;
@@ -69,6 +72,7 @@ int validation(char *IN) {
     if (left != right) code = 1;
     return code;
 }
+
 
 int cos_sin_validation(char *input, int i) {
     int code = 0;

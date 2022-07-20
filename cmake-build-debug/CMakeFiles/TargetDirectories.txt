@@ -1,3 +1,0 @@
-/Users/gryffind/PROJECTS/github/SMART_CALCULATOR/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/Users/gryffind/PROJECTS/github/SMART_CALCULATOR/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/gryffind/PROJECTS/github/SMART_CALCULATOR/cmake-build-debug/CMakeFiles/SMART_CALCULATOR.dir
