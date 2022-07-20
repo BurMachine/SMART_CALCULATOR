@@ -3,7 +3,7 @@
 #include "stack.h"
 #include "stdlib.h"
 
-int QT_processing (char *input, long double value, long double *result) {
+int QT_processing(char *input, long double value, long double *result) {
     int code = ERROR;
     if (!validation(input)) {
         code = SUCCESS;
@@ -24,12 +24,13 @@ int QT_processing (char *input, long double value, long double *result) {
 
 void RPN(stack **first, stack **polish_num, stack **polish_support) {
     int err = 0;
-    while(1) {
+    while (1) {
         if (*first) {
             if ((*first)->type == RIGHT_BR) {
                 stack_pop(first);
                 while ((*polish_support)->type != LEFT_BR) {
-                    stack_push(polish_num, (*polish_support)->value, (*polish_support)->priority, (*polish_support)->type);
+                    stack_push(polish_num, (*polish_support)->value, (*polish_support)->priority,
+                    (*polish_support)->type);
                     stack_pop(polish_support);
                 }
                 stack_pop(polish_support);
@@ -40,7 +41,8 @@ void RPN(stack **first, stack **polish_num, stack **polish_support) {
                 } else {
                     if (*polish_support) {
                         if ((*first)->priority != -1 && (*first)->priority <= (*polish_support)->priority) {
-                            stack_push(polish_num, (*polish_support)->value, (*polish_support)->priority, (*polish_support)->type);
+                            stack_push(polish_num, (*polish_support)->value,
+                            (*polish_support)->priority, (*polish_support)->type);
                             stack_pop(polish_support);
                         }
                     }
@@ -55,7 +57,8 @@ void RPN(stack **first, stack **polish_num, stack **polish_support) {
     err = 0;
     if (*polish_support) {
         while (1) {
-            stack_push(polish_num, (*polish_support)->value, (*polish_support)->priority, (*polish_support)->type);
+            stack_push(polish_num, (*polish_support)->value,
+            (*polish_support)->priority, (*polish_support)->type);
             stack_pop(polish_support);
             if (err || !*polish_support) break;
             if (!(*polish_support)->next) err++;
@@ -143,17 +146,18 @@ void calculator(stack ** result, stack **calculated) {
     }
 }
 
-int bank_(long double sum, int time,long double percent, size_t type, long double *sum_res, long double *mounth_pay, long double *overpay, int N) {
+int bank_(long double sum, int time, long double percent, size_t type,
+long double *sum_res, long double *mounth_pay, long double *overpay, int N) {
     long double payment_mounth = 0;
     long double overpayment = 0;
     long double summary_payment = 0;
     char input[500];
     int code = 0;
     if (type == 1) {
-
         if (!check_for_bank(sum, time, percent)) {
             percent = percent / 12 / 100;
-            sprintf(input, "%Lf*(%Lf+%Lf/((1+%Lf)^%Lf - 1))", sum, (long double) percent, (long double) percent,
+            sprintf(input, "%Lf*(%Lf+%Lf/((1+%Lf)^%Lf - 1))", sum, (long double) percent,
+            (long double) percent,
                     (long double) percent, (long double) time);
             code = validation(input);
             QT_processing(input, 0, &payment_mounth);
@@ -170,14 +174,14 @@ int bank_(long double sum, int time,long double percent, size_t type, long doubl
             percent = percent / 12;
             long double OD = sum/(long double)time;
             long double OZ = sum - (OD *(long double)N);
-            sprintf(input, "%Lf+(%Lf-%Lf*%Lf)*%Lf/12",OD, sum, OZ, (long double)N, percent);
+            sprintf(input, "%Lf+(%Lf-%Lf*%Lf)*%Lf/12", OD, sum, OZ, (long double)N, percent);
             QT_processing(input, 0, &payment_mounth);
             *mounth_pay = payment_mounth;
             summary_payment = payment_mounth;
-            while(N != time) {
+            while (N != time) {
                 payment_mounth = 0;
                 N++;
-                sprintf(input, "%Lf+(%Lf-%Lf*%Lf)*%Lf/12",OD, sum, OZ, (long double)N, percent);
+                sprintf(input, "%Lf+(%Lf-%Lf*%Lf)*%Lf/12", OD, sum, OZ, (long double)N, percent);
                 QT_processing(input, 0, &payment_mounth);
                 summary_payment += payment_mounth;
             }
@@ -189,10 +193,10 @@ int bank_(long double sum, int time,long double percent, size_t type, long doubl
             code = 1;
         }
     }
-    printf("");
+    // printf("");
     return code;
 }
-int check_for_bank(long double sum, int time,long double percent) {
+int check_for_bank(long double sum, int time, long double percent) {
     int code = 1;
     if (sum > 0 && time > 0 && percent >= 0) {
         code = 0;

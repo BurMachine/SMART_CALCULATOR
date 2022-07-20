@@ -10,7 +10,7 @@ int parser(char *input, stack **INPUT, long double x_value) {
             long double num = get_number(input, &i);
             stack_push(INPUT, num, 0, NUMBER);
 //            printf("парсер%Lf\n", (*INPUT)->value);
-            printf("");
+//            printf("");
             count++;
             i--;
             continue;

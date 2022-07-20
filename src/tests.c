@@ -7,11 +7,10 @@
 #include "calculating.h"
 
 START_TEST(smartcalc_tests) {
-char input[100] = "cos(0)"
+char input[100] = "cos(0)";
 long double a;
 QT_processing(input, 0, &a);
 ck_assert_int_eq((int)a, SUCCESS);
-
 }
 
 int main() {

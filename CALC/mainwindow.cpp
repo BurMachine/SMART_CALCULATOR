@@ -30,23 +30,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-//void MainWindow::digits_numbers()
-//{
-//    QPushButton *button = (QPushButton*)sender();
-//    double numbers;
-//    QString new_label;
-//    numbers = (ui->result->text() + button->text()).toDouble();
-//    new_label = QString::number(numbers, 'g', 15 );
-//    ui->result->setText(new_label);
-//}
-
-//void MainWindow::on_pushButton_DOT_clicked()
-//{
-//    if (!(ui->result->text().contains( '.')))
-//         ui->result->setText(ui->result->text() + ".");
-//}
-
-
 void MainWindow::on_pushButton_0_clicked()
 {
     if (!(ui->result->isReadOnly()))

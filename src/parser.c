@@ -1,26 +1,31 @@
 #include "parser.h"
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 int parser(char *input, stack **INPUT, long double x_value) {
     int code = 0;
     int count = 0;
     int bracket_unar = 0;
     for (int i = 0; input[i] != '\n' && input[i] != '\0'; i++) {
-        if ((input[i] >= 48 && input[i] <= 57) || input[i] == '.' || input[i] == ',') {
-            long double num = get_number(input, &i);
+        if (is_num(input[i]) == 0) {
+            char *start_num = &input[i];
+            while (is_num(input[i]) == 0) {
+                i++;
+            }
+            char *finish = &input[--i];
+            long double num = strtod(start_num, &finish);
             stack_push(INPUT, num, 0, NUMBER);
-           printf("парсер%Lf\n", (*INPUT)->value);
-            printf("!");
-            printf("!");
             count++;
-            i--;
-            continue;
+            // i--;
         } else if (input[i] == '*' || input[i] == '/' || input[i] == 'm') {
-            if (input[i] == '*') stack_push(INPUT, 0, 2, MULT);
-            else if (input[i] == '/') {stack_push(INPUT, 0, 2, DIV);}
-            else if (input[i] == 'm') {stack_push(INPUT, 0, 2, MOD); i += 2;}
+            if (input[i] == '*') {stack_push(INPUT, 0, 2, MULT);
+            } else if (input[i] == '/') {stack_push(INPUT, 0, 2, DIV);
+            } else if (input[i] == 'm') {stack_push(INPUT, 0, 2, MOD); i += 2;
+            }
             continue;
-        } else if ((input[i] == '+' || input[i] == '-') && (input[i - 1] == '(' || (input[i - 1] == ' ' && input[i - 2] == ' ') || i == 0)) {
+        } else if ((input[i] == '+' || input[i] == '-') && (input[i - 1] == '('
+        || (input[i - 1] == ' ' && input[i - 2] == ' ') || i == 0)) {
             double num = 0;
             if (input[i] == '+') {
                 i++;
@@ -32,10 +37,12 @@ int parser(char *input, stack **INPUT, long double x_value) {
             stack_push(INPUT, num, 0, NUMBER);
             i--;
             continue;
-        } else if ((input[i] == '+' || input[i] == '-') && ((input[i - 1] >= 48 && input[i - 1] <= 57) || (input[i - 2] >= 48 && input[i - 2] <= 57)
-                                                            || input[i - 1] == ')' || input[i - 2] == ')')) {
-            if (input[i] == '+') stack_push(INPUT, 0, 1, PLUS);
-            else if (input[i] == '-') {stack_push(INPUT, 0, 1, SUB);}
+        } else if ((input[i] == '+' || input[i] == '-') && ((input[i - 1] >= 48 && input[i - 1] <= 57)
+        || (input[i - 2] >= 48 && input[i - 2] <= 57)
+            || input[i - 1] == ')' || input[i - 2] == ')')) {
+            if (input[i] == '+') {stack_push(INPUT, 0, 1, PLUS);
+            } else if (input[i] == '-') {stack_push(INPUT, 0, 1, SUB);
+            }
             continue;
         } else if (input[i] == '(' && (input[i + 1] == '+' || input[i + 1] == '-')) {
             bracket_unar = 1;
@@ -55,25 +62,30 @@ int parser(char *input, stack **INPUT, long double x_value) {
             continue;
         } else if (input[i] == 's' || input[i] == 'c' || input[i] == 't') {
             int a = get_trigonometry_or_sqrt(input, &i);
-            if (a == 0) {stack_push(INPUT, 0, 4, SQRT);}
-            else if (a == 1) {stack_push(INPUT, 0, 4, SIN);}
-            else if (a == 2) {stack_push(INPUT, 0, 4, COS);}
-            else if (a == 3) {stack_push(INPUT, 0, 4, TAN);}
+            if (a == 0) {stack_push(INPUT, 0, 4, SQRT);
+            } else if (a == 1) {stack_push(INPUT, 0, 4, SIN);
+            } else if (a == 2) {stack_push(INPUT, 0, 4, COS);
+            } else if (a == 3) {stack_push(INPUT, 0, 4, TAN);
+            }
             count+= 2;
             continue;
         } else if (input[i] == 'a') {
             i++;
             int a = get_trigonometry_or_sqrt(input, &i);
-            if (a == 1) {stack_push(INPUT, 0, 4, ASIN);}
-            else if (a == 2) {stack_push(INPUT, 0, 4, ACOS);}
-            else if (a == 3) {stack_push(INPUT, 0, 4, ATAN);}
+            if (a == 1) {stack_push(INPUT, 0, 4, ASIN);
+            } else if (a == 2) {stack_push(INPUT, 0, 4, ACOS);
+            } else if (a == 3) {stack_push(INPUT, 0, 4, ATAN);
+            }
             count+= 2;
             continue;
         } else if (input[i] == 'l') {
             int a = get_log_ln(input, &i);
-            if (!a) {stack_push(INPUT, 0, 4, LOG);}
-            else if (a == 27) {stack_push(INPUT, 0, 4, LN);}
-            count+= 2;
+            if (!a) {
+                stack_push(INPUT, 0, 4, LOG);
+            } else if (a == 27) {
+                stack_push(INPUT, 0, 4, LN);
+                }
+            count += 2;
         } else if (input[i] == 'x') {
             stack_push(INPUT, x_value, 0, XXX);
             count++;
@@ -89,8 +101,10 @@ double get_number(char *input, int *i) {
     int j = 0;
     int k = *i;
     while ((input[k] >= 48 && input[k] <= 57) || input[k] == '.' || input[k] == ',') {
-        if (input[k] == ',') {number[j] = '.'; k++; j++;}
-        else {number[j] = input[k]; k++; j++;}
+        if (input[k] == ',') { number[j] = '.'; k++; j++;
+        } else {
+            number[j] = input[k]; k++; j++;
+        }
     }
     *i = k;
     long double num = 0;
@@ -104,7 +118,7 @@ int get_trigonometry_or_sqrt(char *input, int *i) {
     if (input[k] == 's') {
         if (input[k + 1] == 'i') {code = 1; k += 2;}
         if (input[k + 1] == 'q') {code = 0; k += 3;}
-    } else if (input[k] == 'c'){
+    } else if (input[k] == 'c') {
         code = 2;
         k += 2;
     } else if (input[k] == 't') {
@@ -127,4 +141,12 @@ int get_log_ln(char *input, int *i) {
     }
     *i = k;
     return code;
+}
+
+int is_num(char ex) {
+    int errror = 1;
+    if ((ex >= '0' && ex <= '9') || ex == '.') {
+        errror = 0;
+    }
+    return errror;
 }

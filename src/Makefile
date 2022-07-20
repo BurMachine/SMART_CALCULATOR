@@ -2,7 +2,7 @@ APP = build/CALC.app
 BACKEND_FILES = s21_smartcalc.c;
 BACKEND_FILES_O = s21_smartcalc.o
 
-CC+FLAGS = gcc #-std=c11 -Wall -Wextra -Werror -std=c11
+CC+FLAGS = gcc -std=c11 -Wall -Wextra -Werror -std=c11
 GCOVFLAGS = -L. --coverage -ls21_smartcalc
 OS = $(shell uname)
 ifeq ($(OS), Linux)

@@ -2,7 +2,6 @@
 #define BANK_H
 
 #include <QDialog>
-#include "table.h"
 #include<QStandardItemModel>
 
 

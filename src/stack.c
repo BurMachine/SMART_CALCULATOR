@@ -27,7 +27,7 @@ void stack_double_pop(stack **top) {
     tmp = (*top)->next->next->next;
     free((*top)->next->next);
     free((*top)->next);
-    (*top)->next= tmp;
+    (*top)->next = tmp;
 }
 
 void reverse_stack(stack **src, stack **dest) {
@@ -47,18 +47,14 @@ void stack_next_pop(stack **top) {
     (*top)->next = tmp;
 }
 
-//stack stack_pick(stack *current) {
-//    current->next--;
-//    return *current;
-//}
-
-void print_stack(stack *A) {
-    stack *dno = A;
-    while (dno != NULL) {
-        printf("%Lf\n", dno->value);
-        printf("%d\n", dno->priority);
-        printf("%d\n--------------------------------------------------------------------------------\n", dno->type);
-        if (dno == NULL) break;
-        dno = dno->next;
-        }
-}
+// void print_stack(stack *A) {
+//     stack *dno = A;
+//     while (dno != NULL) {
+//         printf("%Lf\n", dno->value);
+//         printf("%d\n", dno->priority);
+//         printf("%d\n------------------------------------------
+//         --------------------------------------\n", dno->type);
+//         if (dno == NULL) break;
+//         dno = dno->next;
+//         }
+// }
